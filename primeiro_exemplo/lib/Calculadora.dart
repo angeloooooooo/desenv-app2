@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class Calculadora extends StatefulWidget {
   @override
@@ -48,7 +49,54 @@ class CalculadoraState extends State<Calculadora> {
                   ),
                   color: Colors.blueAccent,
                   onPressed: somar,
-                )
+                ),
+                new MaterialButton(
+                  child: new Text(
+                    "-",
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  color: Colors.blueAccent,
+                  onPressed: subtrair,
+                ),
+                new MaterialButton(
+                  child: new Text(
+                    "*",
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  color: Colors.blueAccent,
+                  onPressed: multiplicar,
+                ),
+                new MaterialButton(
+                  child: new Text(
+                    "/",
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  color: Colors.blueAccent,
+                  onPressed: dividir,
+                ),
+              ],
+            ),
+            new Padding(padding: const EdgeInsets.only(top: 20)),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                new MaterialButton(
+                    child: new Text("Limpar",
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                    color: Colors.blueGrey,
+                    onPressed: limpar)
               ],
             )
           ],
@@ -69,6 +117,38 @@ class CalculadoraState extends State<Calculadora> {
       valor1 = num.parse(campovalor1.text);
       valor2 = num.parse(campovalor2.text);
       resultado = valor1 + valor2;
+    });
+  }
+
+  void subtrair() {
+    setState(() {
+      valor1 = num.parse(campovalor1.text);
+      valor2 = num.parse(campovalor2.text);
+      resultado = valor1 - valor2;
+    });
+  }
+
+  void multiplicar() {
+    setState(() {
+      valor1 = num.parse(campovalor1.text);
+      valor2 = num.parse(campovalor2.text);
+      resultado = valor1 * valor2;
+    });
+  }
+
+  void dividir() {
+    setState(() {
+      valor1 = num.parse(campovalor1.text);
+      valor2 = num.parse(campovalor2.text);
+      resultado = valor1 / valor2;
+    });
+  }
+
+  void limpar() {
+    setState(() {
+      resultado = 0;
+      campovalor1.text = "";
+      campovalor2.text = "";
     });
   }
 }
